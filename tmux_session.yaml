@@ -1,0 +1,17 @@
+session_name: 4-pane-split
+windows:
+  - window_name: dev window
+    layout: tiled
+    shell_command_before:
+      - cd ~/ # run as a first command in all panes
+    panes:
+      - shell_command: # pane no. 1
+          - cd /workspace # Project workspace
+      - shell_command: # pane no 2.
+          - cd ~
+          - ./squashfs-root/qgroundcontrol-start.sh
+      - shell_command: 
+          - cd ~/PX4-Autopilot/
+          - make px4_sitl gz_x500
+      - shell_command: 
+          - zenoh-bridge-ros2dds -h
